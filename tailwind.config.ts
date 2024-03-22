@@ -19,6 +19,7 @@ const config: Config = {
         flameOrange: "#FB8B24",
         ironOrange: "#E36414",
         xmasCandy: "#9A031E",
+        explodingStar: "#FFD93D",
         white: "#fff",
         black: "#000",
       },
