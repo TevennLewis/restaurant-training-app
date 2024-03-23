@@ -22,6 +22,8 @@ const config: Config = {
         explodingStar: "#FFD93D",
         white: "#fff",
         black: "#000",
+        pelati: "#FF3131",
+        green: "#00FF00",
       },
     },
   },

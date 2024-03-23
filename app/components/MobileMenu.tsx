@@ -16,7 +16,7 @@ const MobileMenu = () => {
 
   return (
     <Menu as="div" className="relative  inline-block text-center">
-      <Menu.Button>
+      <Menu.Button className="flex items-center">
         <MdRestaurantMenu fill="#FB8B24" size={20} />
       </Menu.Button>
       <Transition
