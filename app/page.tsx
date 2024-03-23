@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Button from "./components/Button";
-import logo from "@/public/images/logo.png";
+import logo from "@/public/images/logo-bare.png";
 import Input from "./components/Input";
 import LoginForm from "./components/LoginRegisterForm";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen bg-gradient-to-b from-plumPurple via-plumPurple to-xmasCandy flex-col items-center">
+    <main className="flex min-h-screen bg-gradient-to-b from-black via-plumPurple to-xmasCandy flex-col items-center">
       <div className="text-3xl pt-10 font-semibold text-flameOrange">
         <Image
           className="w-[250px] h-[45px]"
