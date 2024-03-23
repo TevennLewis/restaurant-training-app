@@ -1,16 +1,15 @@
+import React from "react";
 import Image from "next/image";
-import Button from "./components/Button";
+import LoginRegisterForm from "../components/LoginRegisterForm";
 import logo from "@/public/images/logo.png";
-import Input from "./components/Input";
-import LoginForm from "./components/LoginRegisterForm";
 
-export default function Home() {
+const LoginPage = () => {
   return (
     <main className="flex min-h-screen bg-gradient-to-b from-plumPurple via-plumPurple to-xmasCandy flex-col items-center">
       <div className="text-3xl pt-10 font-semibold text-flameOrange">
         <Image
           className="w-[250px] h-[45px]"
-          quality={100}
+          quality={75}
           src={logo}
           alt="logo"
           priority
@@ -20,12 +19,14 @@ export default function Home() {
       <div className="flex flex-col flex-1 justify-center">
         <div className="flex flex-col ">
           <div className=" text-flameOrange text-xl mb-4 font-medium">
-            Register
+            Login
           </div>
 
-          <LoginForm />
+          <LoginRegisterForm />
         </div>
       </div>
     </main>
   );
-}
+};
+
+export default LoginPage;

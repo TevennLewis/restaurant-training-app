@@ -5,6 +5,7 @@ interface Props {
   type?: "submit" | "button";
   variant?: "primary" | "secondary";
   disabled?: boolean;
+  onClick: () => void;
 }
 
 const Button = ({
@@ -12,10 +13,13 @@ const Button = ({
   type = "button",
   variant = "primary",
   disabled,
+  onClick,
 }: Props) => {
   return (
     <button
-      className={` rounded-[10px] leading-none p-2.5 ${
+      type={type}
+      onClick={onClick}
+      className={` rounded-[5px] leading-none p-2.5 ${
         variant === "primary" && "bg-ironOrange text-explodingStar"
       } ${variant === "secondary" && "bg-explodingStar text-ironOrange"}`}
       disabled={disabled}
