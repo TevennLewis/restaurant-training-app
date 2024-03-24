@@ -1,12 +1,16 @@
+import { MenuItem } from "@/app/models/menu-item";
 import React from "react";
-import PageTitlePill from "../components/PageTitlePill";
 import food1 from "@/public/images/pizza.jpg";
 import food2 from "@/public/images/chicken-wrap.jpg";
 import food3 from "@/public/images/fruit-Parfait.jpg";
 import food4 from "@/public/images/rice-bowl.jpg";
-import MenuItemCard from "../components/MenuItemCard";
 
-const Menu = () => {
+interface Props {
+  menuItem: MenuItem
+}
+
+const MenuItemDetails = ({menuItem}: Props) => {
+
   const menuItems = [
     {
       id: 1,
@@ -65,17 +69,9 @@ const Menu = () => {
     },
   ];
 
-  return (
-    <div className="flex flex-col p-5">
-      <PageTitlePill title="Menu" />
+  const itemDetails = menuItems.find(item => item.id ===)
 
-      <div className="flex flex-col gap-y-3 p-5 rounded-[10px] mt-10 w-full bg-black items-center">
-        {menuItems.map((item) => (
-          <MenuItemCard menuItem={item} />
-        ))}
-      </div>
-    </div>
-  );
+  return <div>MenuItemDetails</div>;
 };
 
-export default Menu;
+export default MenuItemDetails;

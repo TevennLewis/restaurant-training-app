@@ -6,7 +6,7 @@ import QuizListItem from "../components/QuizListItem";
 import Link from "next/link";
 import food1 from "@/public/images/pizza.jpg";
 import food2 from "@/public/images/chicken-wrap.jpg";
-import food3 from "@/public/images/fruit-parfe.jpg";
+import food3 from "@/public/images/fruit-Parfait.jpg";
 import food4 from "@/public/images/rice-bowl.jpg";
 import PageTitlePill from "../components/PageTitlePill";
 
@@ -40,7 +40,7 @@ const Dashboard = () => {
     },
     {
       id: 3,
-      name: "Fruit Parfe",
+      name: "Fruit Parfait",
       price: 7.99,
       ingredients: [
         "raspberries",
@@ -137,7 +137,7 @@ const Dashboard = () => {
         </Link>
       </div>
 
-      <div className="w-full bg-gradient-to-tr from-black via-plumPurple to-xmasCandy border-2 border-ironOrange to flex flex-col gap-y-2 p-3 rounded-[10px]">
+      <div className="w-full bg-gradient-to-br from-black via-plumPurple to-rubyRed  to flex flex-col gap-y-2 p-3 rounded-[10px]">
         {quizzes.map(
           (quiz) =>
             quiz.pass !== null && <QuizListItem quiz={quiz} key={quiz.id} />
