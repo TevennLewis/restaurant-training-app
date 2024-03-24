@@ -8,6 +8,7 @@ import food1 from "@/public/images/pizza.jpg";
 import food2 from "@/public/images/chicken-wrap.jpg";
 import food3 from "@/public/images/fruit-parfe.jpg";
 import food4 from "@/public/images/rice-bowl.jpg";
+import PageTitlePill from "../components/PageTitlePill";
 
 const Dashboard = () => {
   const menuItems = [
@@ -104,17 +105,15 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col p-5">
-      <div className="text-2xl bg-xmasCandy rounded-full px-4 border-2 border-ironOrange py-2 w-fit font-bold">
-        Dashboard
-      </div>
+      <PageTitlePill title="Dashboard" />
 
-      <div className="mt-10 mb-4 flex bg-xmasCandy p-2 rounded-[5px] border border-ironOrange items-center font-medium">
+      <div className="mt-10 mb-4 flex bg-black p-2 rounded-[5px]  items-center font-medium">
         <div>Featured Menu Items</div>
 
         <div className="flex-1" />
 
         <Link
-          className="text-xs flex items-center gapx1 font-light"
+          className="text-xs flex items-center gap-x-1 font-light"
           href="/menu"
         >
           View Full Menu
@@ -124,11 +123,21 @@ const Dashboard = () => {
 
       <DashMenuItems menuItems={menuItems} />
 
-      <div className="mt-10 mb-4 bg-xmasCandy p-2 rounded-[5px] border border-ironOrange font-medium">
-        My Quizzes
+      <div className="my-4 bg-black p-2 flex items-center rounded-[5px]  font-medium">
+        <div>My Quizzes</div>
+
+        <div className="flex-1" />
+
+        <Link
+          className="text-xs font-light flex items-center gap-x-1"
+          href="/quizzes"
+        >
+          View Available Quizzes
+          <MdKeyboardArrowRight fill="#FB8B24" />
+        </Link>
       </div>
 
-      <div className="w-full bg-gradient-to-br from-xmasCandy via-ironOrange to-flameOrange to flex flex-col gap-y-2 p-3 rounded-[10px]">
+      <div className="w-full bg-gradient-to-tr from-black via-plumPurple to-xmasCandy border-2 border-ironOrange to flex flex-col gap-y-2 p-3 rounded-[10px]">
         {quizzes.map(
           (quiz) =>
             quiz.pass !== null && <QuizListItem quiz={quiz} key={quiz.id} />

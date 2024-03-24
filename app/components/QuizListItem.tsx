@@ -8,7 +8,7 @@ interface Props {
 
 const QuizListItem = ({ quiz }: Props) => {
   return (
-    <div className="bg-black p-3 flex items-center h-10 rounded-[10px] w-full">
+    <div className="bg-black p-3 flex border border-flameOrange items-center h-10 rounded-[10px] w-full">
       <div className="text-sm font-semibold">{quiz.name}</div>
 
       <div className="flex-1" />
