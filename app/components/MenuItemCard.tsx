@@ -1,6 +1,7 @@
 import React from "react";
 import { MenuItem } from "../models/menu-item";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   menuItem: MenuItem;
@@ -8,7 +9,10 @@ interface Props {
 
 const MenuItemCard = ({ menuItem }: Props) => {
   return (
-    <div className="w-full ring-[2px] ring-xmasCandy max-w-[335px] rounded-[10px] bg-black">
+    <Link
+      href={`/menu/${menuItem.id}`}
+      className="w-full ring-[2px] ring-xmasCandy max-w-[335px] rounded-[10px] bg-black"
+    >
       <Image
         className="object-cover border-b-2 border-b-xmasCandy rounded-t-[10px] object-center"
         src={menuItem.img}
@@ -19,7 +23,7 @@ const MenuItemCard = ({ menuItem }: Props) => {
         <div className="font-semibold">{menuItem.name}</div>
         <div className="text-xs">${menuItem.price}</div>
       </div>
-    </div>
+    </Link>
   );
 };
 

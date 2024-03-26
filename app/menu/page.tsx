@@ -67,7 +67,7 @@ const Menu = () => {
 
   return (
     <div className="flex flex-col p-5">
-      <PageTitlePill title="Menu" />
+      <PageTitlePill back title="Menu" />
 
       <div className="flex flex-col gap-y-3 p-5 rounded-[10px] mt-10 w-full bg-black items-center">
         {menuItems.map((item) => (
