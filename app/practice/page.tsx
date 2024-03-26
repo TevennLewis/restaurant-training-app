@@ -1,14 +1,19 @@
-import React from "react";
-import PageTitlePill from "../components/PageTitlePill";
+"use client";
+
+import React, { useState } from "react";
 import food1 from "@/public/images/pizza.jpg";
 import food2 from "@/public/images/chicken-wrap.jpg";
 import food3 from "@/public/images/fruit-Parfait.jpg";
 import food4 from "@/public/images/rice-bowl.jpg";
-import MenuItemCard from "../components/MenuItemCard";
+import { MenuItem } from "../models/menu-item";
 import FlashCard from "../components/FlashCard";
+import PageTitlePill from "../components/PageTitlePill";
+import Button from "../components/Button";
 
-const Menu = () => {
-  const menuItems = [
+const PracticePage = () => {
+  const [allFlipped, setAllFlipped] = useState(false);
+
+  const menuItems: MenuItem[] = [
     {
       id: 1,
       name: "Pizza",
@@ -67,16 +72,36 @@ const Menu = () => {
   ];
 
   return (
-    <div className="flex flex-col p-5">
-      <PageTitlePill back title="Menu" />
+    <div className="w-full flex p-5 flex-col">
+      <PageTitlePill title="Practice" back />
 
-      <div className="flex flex-col gap-y-3 p-5 rounded-[10px] mt-10 w-full bg-black items-center">
+      <div className="mt-10 mb-4 flex bg-black p-5 rounded-[5px] text-xs justify-center font-medium">
+        <div className="flex items-center w-full flex-col">
+          <div className="text-base font-semibold">Flash Card Game:</div>
+
+          <div className="text-center mb-5">
+            Click on each card to reveal the relevant ingredients, food
+            allergies, and price! If you would like to start with the details
+            first and guess the image, tap or click the button below
+          </div>
+
+          <Button
+            variant="secondary"
+            type="button"
+            onClick={() => setAllFlipped(!allFlipped)}
+          >
+            Flip All Cards
+          </Button>
+        </div>
+      </div>
+
+      <div className="w-full flex flex-col gap-y-6 items-center">
         {menuItems.map((item) => (
-          <MenuItemCard menuItem={item} />
+          <FlashCard allFlip={allFlipped} menuItem={item} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Menu;
+export default PracticePage;

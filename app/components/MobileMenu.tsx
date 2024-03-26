@@ -61,6 +61,19 @@ const MobileMenu = () => {
           </Menu.Item>
           <Menu.Item>
             {({ active }) => (
+              <Link
+                className={`${
+                  active &&
+                  "bg-flameOrange/30 ring-[1px] ring-explodingStar rounded-[5px]"
+                }`}
+                href="/practice"
+              >
+                Practice
+              </Link>
+            )}
+          </Menu.Item>
+          <Menu.Item>
+            {({ active }) => (
               <button
                 onClick={logout}
                 className={`${
