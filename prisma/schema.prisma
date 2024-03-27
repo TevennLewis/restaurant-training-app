@@ -19,7 +19,7 @@ model Member {
   name String
   password String
   profile_pic String
-  // quizzes 
+  quizzes Grade[]
   teams Team[]
   isAdmin Boolean @default(false)
 }
@@ -33,7 +33,18 @@ model Team {
 model Quiz {
   id Int @id @default(autoincrement())
   name String @unique
+  members Grade[]
   // questions
+}
+
+model Grade {
+  quiz Quiz @relation(fields: [quizId], references: [id])
+  quizId Int
+  member Member @relation(fields: [memberId], references: [id])
+  memberId Int
+  grade Int
+
+  @@id([quizId, memberId])
 }
 
 model Question {
