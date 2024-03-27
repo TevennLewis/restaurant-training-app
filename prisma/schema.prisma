@@ -29,3 +29,18 @@ model Team {
   name String @unique
   // members
 }
+
+model Quiz {
+  id Int @id @default(autoincrement())
+  name String @unique
+  // questions
+}
+
+model MenuItem {
+  id Int @id @default(autoincrement())
+  name String @unique
+  price Decimal @db.Decimal(2, 0)
+  ingredients String[]
+  allergies String[]
+  img String
+}
