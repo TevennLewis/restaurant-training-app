@@ -36,6 +36,13 @@ model Quiz {
   // questions
 }
 
+model Question {
+  id Int @id @default(autoincrement())
+  question String
+  answer String
+  options String[]
+}
+
 model MenuItem {
   id Int @id @default(autoincrement())
   name String @unique
