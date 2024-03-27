@@ -20,14 +20,14 @@ model Member {
   password String
   profile_pic String
   // quizzes 
-  // teams
+  teams Team[]
   isAdmin Boolean @default(false)
 }
 
 model Team {
   id Int @id @default(autoincrement())
   name String @unique
-  // members
+  members Member[]
 }
 
 model Quiz {
