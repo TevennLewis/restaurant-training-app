@@ -34,7 +34,7 @@ model Quiz {
   id Int @id @default(autoincrement())
   name String @unique
   members Grade[]
-  // questions
+  questions Question[]
 }
 
 model Grade {
@@ -52,6 +52,8 @@ model Question {
   question String
   answer String
   options String[]
+  quiz Quiz @relation(fields: [quizId], references: [id])
+  quizId Int
 }
 
 model MenuItem {
