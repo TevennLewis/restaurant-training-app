@@ -14,10 +14,11 @@ const FlashCard = ({ menuItem, allFlip }: Props) => {
   const hasInitialized = useRef(false);
 
   useEffect(() => {
-    if (!hasInitialized.current && allFlip) {
+    if (!hasInitialized.current && !allFlip) {
       return;
     } else {
-      setFlipped(true);
+      setFlipped(!flipped);
+      hasInitialized.current = true;
     }
   }, [allFlip]);
 

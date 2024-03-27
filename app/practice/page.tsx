@@ -97,7 +97,7 @@ const PracticePage = () => {
 
       <div className="w-full flex flex-col gap-y-6 items-center">
         {menuItems.map((item) => (
-          <FlashCard allFlip={allFlipped} menuItem={item} />
+          <FlashCard key={item.id} allFlip={allFlipped} menuItem={item} />
         ))}
       </div>
     </div>
