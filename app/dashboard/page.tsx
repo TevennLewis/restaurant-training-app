@@ -9,6 +9,7 @@ import food2 from "@/public/images/chicken-wrap.jpg";
 import food3 from "@/public/images/fruit-Parfait.jpg";
 import food4 from "@/public/images/rice-bowl.jpg";
 import PageTitlePill from "../components/PageTitlePill";
+import SectionTitle from "../components/SectionTitle";
 
 const Dashboard = () => {
   const menuItems = [
@@ -107,7 +108,7 @@ const Dashboard = () => {
     <div className="flex flex-col p-5">
       <PageTitlePill title="Dashboard" />
 
-      <div className="mt-10 mb-4 flex bg-black p-2 rounded-[5px]  items-center font-medium">
+      <SectionTitle className="mt-10 mb-4">
         <div>Featured Menu Items</div>
 
         <div className="flex-1" />
@@ -119,11 +120,11 @@ const Dashboard = () => {
           View Full Menu
           <MdKeyboardArrowRight fill="#FB8B24" />
         </Link>
-      </div>
+      </SectionTitle>
 
       <DashMenuItems menuItems={menuItems} />
 
-      <div className="my-4 bg-black p-2 flex items-center rounded-[5px]  font-medium">
+      <SectionTitle className="my-4">
         <div>My Quizzes</div>
 
         <div className="flex-1" />
@@ -135,7 +136,7 @@ const Dashboard = () => {
           View Available Quizzes
           <MdKeyboardArrowRight fill="#FB8B24" />
         </Link>
-      </div>
+      </SectionTitle>
 
       <div className="w-full bg-gradient-to-br from-black via-plumPurple to-rubyRed  to flex flex-col gap-y-2 p-3 rounded-[10px]">
         {quizzes.map(

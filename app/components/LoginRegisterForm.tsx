@@ -50,13 +50,13 @@ const LoginForm = () => {
               <input
                 id="admin"
                 name="admin"
-                className="appearance-none peer rounded-[2px] h-4 w-4  border border-flameOrange checked:bg-flameOrange bg-plumPurple "
+                className="appearance-none peer rounded-[2px] h-5 w-5  border border-flameOrange checked:bg-flameOrange bg-plumPurple "
                 type="checkbox"
               />
 
               <FaCheck
                 color="#5F0F40"
-                className="absolute hidden peer-checked:block"
+                className="absolute hidden pointer-events-none peer-checked:block"
                 size={7}
               />
             </div>
