@@ -9,6 +9,7 @@ import { MenuItem } from "../models/menu-item";
 import FlashCard from "../components/FlashCard";
 import PageTitlePill from "../components/PageTitlePill";
 import Button from "../components/Button";
+import SectionTitle from "../components/SectionTitle";
 
 const PracticePage = () => {
   const [allFlipped, setAllFlipped] = useState(false);
@@ -75,11 +76,11 @@ const PracticePage = () => {
     <div className="w-full flex p-5 flex-col">
       <PageTitlePill title="Practice" back />
 
-      <div className="mt-10 mb-4 flex bg-black p-5 rounded-[5px] text-xs justify-center font-medium">
-        <div className="flex items-center w-full flex-col">
+      <SectionTitle className="mt-10 mb-4 text-sm text-center">
+        <div className="flex items-center py-3 w-full flex-col">
           <div className="text-base font-semibold">Flash Card Game:</div>
 
-          <div className="text-center mb-5">
+          <div className="text-center text-xs my-5">
             Click on each card to reveal the relevant ingredients, food
             allergies, and price! If you would like to start with the details
             first and guess the image, tap or click the button below
@@ -93,7 +94,7 @@ const PracticePage = () => {
             Flip All Cards
           </Button>
         </div>
-      </div>
+      </SectionTitle>
 
       <div className="w-full flex flex-col gap-y-6 items-center">
         {menuItems.map((item) => (
