@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/prisma/client';
+import { partialMemberSchema } from '../schema';
 
 type IdParam = {
   params: {
@@ -22,6 +23,8 @@ export async function PATCH(
   request: NextRequest,
   { params }: IdParam) {
     const body = await request.json();
+    const validation = partialMemberSchema.safeParse(body);
+    if (!validation.success) return NextResponse.json(validation.error.errors);
     const updatedMember = await prisma.member.update({
       where: {
         id: parseInt(params.id)
