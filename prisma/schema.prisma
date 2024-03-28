@@ -18,7 +18,7 @@ model Member {
   email       String  @unique
   name        String?
   password    String
-  profile_pic String?
+  profilePic String?
   quizzes     Grade[]
   teams       Team[]
   isAdmin     Boolean @default(false)
