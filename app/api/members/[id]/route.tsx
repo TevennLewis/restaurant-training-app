@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/prisma/client';
 
-const memberSeed = [
-  { id: 1, name: 'Courtney' },
-  { id: 2, name: 'Tevenn' },
-  { id: 3, name: 'John' }
-];
-
-export function GET(
+export async function GET(
   request: NextRequest,
-  { params }: { params: { id: number }}) {
-    if (params.id > 10) return NextResponse.json({ error: 'ID not found' }, { status: 404 });
-  return NextResponse.json(memberSeed);
+  { params }: { params: { id: string }}) {
+    const member = await prisma.member.findUnique({
+      where: {
+        id: parseInt(params.id)
+      }
+    });
+    return NextResponse.json(member, { status: 200 });
 }
+
