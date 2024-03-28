@@ -1,8 +1,6 @@
 import Image from "next/image";
-import Button from "./components/Button";
 import logo from "@/public/images/logo-bare.png";
-import Input from "./components/Input";
-import LoginForm from "./components/LoginRegisterForm";
+import LoginRegisterForm from "./components/LoginRegisterForm";
 
 export default function Home() {
   return (
@@ -23,7 +21,7 @@ export default function Home() {
             Register
           </div>
 
-          <LoginForm />
+          <LoginRegisterForm />
         </div>
       </div>
     </main>
