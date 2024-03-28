@@ -12,3 +12,18 @@ export async function GET(
     return NextResponse.json(member, { status: 200 });
 }
 
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: { id: string }}) {
+    const body = await request.json();
+    console.log(body)
+    const updatedMember = await prisma.member.update({
+      where: {
+        id: parseInt(params.id)
+      },
+      data: {
+        ...body
+      }
+    });
+    return NextResponse.json(updatedMember, { status: 200 });
+  }
