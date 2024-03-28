@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  name        String?
+  password    String
+  profile_pic String?
+  quizzes     Grade[]
+  teams       Team[]
+  isAdmin     Boolean @default(false)
+}
+
+model Team {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  members Member[]
+}
+
+model Quiz {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  members   Grade[]
+  questions Question[]
+}
+
+model Grade {
+  quiz     Quiz   @relation(fields: [quizId], references: [id])
+  quizId   Int
+  member   Member @relation(fields: [memberId], references: [id])
+  memberId Int
+  grade    Int?
+
+  @@id([quizId, memberId])
+}
+
+model Question {
+  id       Int      @id @default(autoincrement())
+  question String
+  answer   String
+  options  String[] @default([])
+  quiz     Quiz     @relation(fields: [quizId], references: [id])
+  quizId   Int
+}
+
+model MenuItem {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  price       Decimal? @db.Decimal(2, 0)
+  ingredients String[] @default([])
+  allergies   String[] @default([])
+  img         String?
+}
