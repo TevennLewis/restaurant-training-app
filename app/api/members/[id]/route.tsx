@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/prisma/client';
 
+type IdParam = {
+  params: {
+    id: string;
+  }
+}
+
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string }}) {
+  { params }: IdParam) {
     const member = await prisma.member.findUnique({
       where: {
         id: parseInt(params.id)
@@ -14,9 +20,8 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string }}) {
+  { params }: IdParam) {
     const body = await request.json();
-    console.log(body)
     const updatedMember = await prisma.member.update({
       where: {
         id: parseInt(params.id)
@@ -27,3 +32,16 @@ export async function PATCH(
     });
     return NextResponse.json(updatedMember, { status: 200 });
   }
+
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: IdParam) {
+    const deletedMember = await prisma.member.delete({
+      where: {
+        id: parseInt(params.id)
+      }
+    });
+    console.log(deletedMember)
+    return NextResponse.json({ status: 204 });
+}
