@@ -2,15 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/prisma/client';
 import { partialMemberSchema } from '../schema';
 
-type IdParam = {
-  params: {
-    id: string;
-  }
-}
-
 export async function GET(
   request: NextRequest,
-  { params }: IdParam) {
+  { params }: ReqParams) {
     const member = await prisma.member.findUnique({
       where: {
         id: parseInt(params.id)
@@ -22,7 +16,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: IdParam) {
+  { params }: ReqParams) {
     const body = await request.json();
     const validation = partialMemberSchema.safeParse(body);
     if (!validation.success) return NextResponse.json(validation.error.errors, { status: 404 });
@@ -40,7 +34,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: IdParam) {
+  { params }: ReqParams) {
     const deletedMember = await prisma.member.delete({
       where: {
         id: parseInt(params.id)
