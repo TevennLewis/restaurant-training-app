@@ -20,7 +20,7 @@ model Member {
   password    String
   profilePic  String?
   quizzes     Grade[]
-  teams       Team[]
+  teams       Team[] // change to one - many
   isAdmin     Boolean @default(false)
 }
 
@@ -35,6 +35,7 @@ model Quiz {
   name      String     @unique
   members   Grade[]
   questions Question[]
+  // team
 }
 
 model Grade {
@@ -63,4 +64,5 @@ model MenuItem {
   ingredients String[] @default([])
   allergies   String[] @default([])
   img         String?
+  // team
 }
