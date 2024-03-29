@@ -5,7 +5,7 @@ interface Props {
   type?: "submit" | "button";
   variant?: "primary" | "secondary";
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button = ({

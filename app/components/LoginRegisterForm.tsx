@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { ChangeEvent, SyntheticEvent, useRef, useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import Link from "next/link";
@@ -11,9 +11,30 @@ const LoginForm = () => {
   const route = usePathname();
   const router = useRouter();
 
-  const handleSubmit = () => {
+  const admin = useRef<HTMLInputElement>(null);
+
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event: SyntheticEvent) => {
     // handle submit logic
-    void router.replace("/dashboard");
+    event.preventDefault();
+
+    const data = {
+      email: email,
+      name: name,
+      password: password,
+      isAdmin: admin.current?.checked,
+    };
+
+    await fetch("/api/members", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
   };
 
   return (
@@ -24,8 +45,25 @@ const LoginForm = () => {
           required
           placeholder="email"
           id="email"
+          value={email}
           name="email"
           autoComplete="email"
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            setEmail(event.target.value)
+          }
+        />
+
+        <Input
+          type="text"
+          required
+          placeholder="name"
+          id="name"
+          value={name}
+          name="email"
+          autoComplete="email"
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            setName(event.target.value)
+          }
         />
 
         <Input
@@ -33,14 +71,15 @@ const LoginForm = () => {
           required
           placeholder="password"
           id="password"
+          value={password}
           name="password"
           autoComplete="current-password"
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            setPassword(event.target.value)
+          }
         />
 
-        <Button
-          variant="primary"
-          onClick={() => void router.replace("/dashboard")}
-        >
+        <Button variant="primary" type="submit">
           {route === "/" ? "Sign Up" : "Login"}
         </Button>
 
@@ -48,8 +87,10 @@ const LoginForm = () => {
           <div className="flex justify-start gap-x-2 items-center">
             <div className="relative flex justify-center items-center">
               <input
+                ref={admin}
                 id="admin"
                 name="admin"
+                value="isAdmin"
                 className="appearance-none peer rounded-[2px] h-5 w-5  border border-flameOrange checked:bg-flameOrange bg-plumPurple "
                 type="checkbox"
               />
