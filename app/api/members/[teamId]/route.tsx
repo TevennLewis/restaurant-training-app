@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/prisma/client';
-import { memberSchema } from '../schema';
 
 export async function GET(
   request: NextRequest,
