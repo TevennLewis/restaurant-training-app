@@ -20,8 +20,8 @@ model Member {
   password   String
   profilePic String?
   quizzes    Grade[]
-  teams      Team    @relation(fields: [teamId], references: [id])
-  teamId     Int
+  teams      Team?   @relation(fields: [teamId], references: [id])
+  teamId     Int?
   isAdmin    Boolean @default(false)
 }
 
