@@ -8,7 +8,8 @@ export const memberSchema = z.object({
 }).strict();
 
 export const partialMemberSchema = memberSchema.extend({
-  profilePic: z.string()
+  profilePic: z.string(),
+  teamId: z.number()
 }).partial().strict();
 // .superRefine(({ confirmPassword, password }, ctx) => {
 //   if (confirmPassword !== password) {
