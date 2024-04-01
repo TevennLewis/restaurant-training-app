@@ -11,10 +11,3 @@ export const partialMemberSchema = memberSchema.extend({
   profilePic: z.string(),
   teamId: z.number()
 }).partial().strict();
-// .superRefine(({ confirmPassword, password }, ctx) => {
-//   if (confirmPassword !== password) {
-//     ctx.addIssue({
-//       code: 'custom',
-//       message: 'Passwords did not match'
-//     });
-//   }
