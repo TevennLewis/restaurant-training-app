@@ -30,3 +30,15 @@ export async function PATCH(
     });
     return NextResponse.json(updatedQuestion, { status: 200 });
   }
+
+  export async function DELETE(
+    request: NextRequest,
+    { params }: ReqParams) {
+      const deletedQuestion = await prisma.question.delete({
+        where: {
+          id: parseInt(params.id)
+        }
+      });
+      if (!deletedQuestion) return NextResponse.json({ error: 'Question not found' }, { status: 404 });
+      return NextResponse.json({ status: 204 });
+    }
