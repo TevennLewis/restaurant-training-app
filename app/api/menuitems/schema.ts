@@ -7,3 +7,5 @@ export const menuItemSchema = z.object({
   allergies: z.array(z.string()),
   img: z.string()
 }).strict();
+
+export const partialMenuItemSchema = menuItemSchema.partial();

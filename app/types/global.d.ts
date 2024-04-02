@@ -3,7 +3,7 @@ export {}
 declare global {
   type ReqParams = {
     params: {
-      id: string;
+      [param: string]: string;
     }
   }
 }

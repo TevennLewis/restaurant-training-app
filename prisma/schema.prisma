@@ -14,20 +14,23 @@ datasource db {
 }
 
 model Member {
-  id          Int     @id @default(autoincrement())
-  email       String  @unique
-  name        String
-  password    String
-  profilePic  String?
-  quizzes     Grade[]
-  teams       Team[] // change to one - many
-  isAdmin     Boolean @default(false)
+  id         Int     @id @default(autoincrement())
+  email      String  @unique
+  name       String
+  password   String
+  profilePic String?
+  quizzes    Grade[]
+  teams      Team?   @relation(fields: [teamId], references: [id])
+  teamId     Int?
+  isAdmin    Boolean @default(false)
 }
 
 model Team {
-  id      Int      @id @default(autoincrement())
-  name    String   @unique
-  members Member[]
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  members   Member[]
+  menuItems MenuItem[]
+  quizzes   Quiz[]
 }
 
 model Quiz {
@@ -35,7 +38,8 @@ model Quiz {
   name      String     @unique
   members   Grade[]
   questions Question[]
-  // team
+  team      Team       @relation(fields: [teamId], references: [id])
+  teamId    Int
 }
 
 model Grade {
@@ -64,5 +68,6 @@ model MenuItem {
   ingredients String[] @default([])
   allergies   String[] @default([])
   img         String?
-  // team
+  team        Team     @relation(fields: [teamId], references: [id])
+  teamId      Int
 }
