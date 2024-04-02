@@ -8,4 +8,4 @@ export const menuItemSchema = z.object({
   img: z.string()
 }).strict();
 
-export const partialMenuItemSchema = menuItemSchema.partial();
+export const partialMenuItemSchema = menuItemSchema.partial().strict();
