@@ -5,7 +5,9 @@ export const menuItemSchema = z.object({
   price: z.number(),
   ingredients: z.array(z.string()),
   allergies: z.array(z.string()),
-  img: z.string()
+  img: z.string(),
+  teamId: z.number(),
+  isFeatured: z.boolean(),
 }).strict();
 
 export const partialMenuItemSchema = menuItemSchema.partial().strict();
