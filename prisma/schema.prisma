@@ -70,4 +70,5 @@ model MenuItem {
   img         String?
   team        Team     @relation(fields: [teamId], references: [id])
   teamId      Int
+  isFeatured  Boolean  @default(false)
 }
