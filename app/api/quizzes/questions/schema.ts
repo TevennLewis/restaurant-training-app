@@ -7,4 +7,6 @@ export const questionSchema = z.object({
   quizId: z.number()
 }).strict();
 
+export const groupQuestionSchema = z.array(questionSchema);
+
 export const partialQuestionSchema = questionSchema.partial().strict();
