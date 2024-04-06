@@ -31,7 +31,6 @@ export async function PATCH(
     return NextResponse.json(updatedMember, { status: 200 });
   }
 
-
 export async function DELETE(
   request: NextRequest,
   { params }: ReqParams) {

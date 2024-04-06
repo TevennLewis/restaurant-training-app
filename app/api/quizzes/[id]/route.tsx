@@ -30,3 +30,20 @@ export async function GET(
       });
       return NextResponse.json(updatedQuiz, { status: 200 });
     }
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: ReqParams) {
+    const deletedQuestions = await prisma.question.deleteMany({
+      where: {
+        quizId: parseInt(params.id)
+      }
+    });
+    const deletedQuiz = await prisma.quiz.delete({
+      where: {
+        id: parseInt(params.id)
+      } 
+    });
+    if (!deletedQuiz) return NextResponse.json({ error: 'Quiz not found' }, { status: 404 });
+    return NextResponse.json(deletedQuestions ?? 'No questions found', { status: 200 });
+  }
