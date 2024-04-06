@@ -7,7 +7,7 @@ export async function GET(
   { params }: ReqParams) {
   const questions = await prisma.question.findMany({
     where: {
-      quizId: parseInt(params.id)
+      quizId: parseInt(params.quizId)
     }
   });
   if (!questions) return NextResponse.json({ error: 'No questions found' }, { status: 404 });
@@ -22,7 +22,7 @@ export async function PATCH(
     if (!validation.success) return NextResponse.json(validation.error.errors, { status: 404 });
     const updatedQuestion = await prisma.question.update({
       where: {
-        id: parseInt(params.id)
+        id: parseInt(params.quizId)
       },
       data: {
         ...body
@@ -36,7 +36,7 @@ export async function PATCH(
     { params }: ReqParams) {
       const deletedQuestion = await prisma.question.delete({
         where: {
-          id: parseInt(params.id)
+          id: parseInt(params.quizId)
         }
       });
       if (!deletedQuestion) return NextResponse.json({ error: 'Question not found' }, { status: 404 });
