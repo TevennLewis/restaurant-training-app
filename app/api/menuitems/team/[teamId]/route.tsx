@@ -6,7 +6,7 @@ export async function GET(
   { params }: ReqParams) {
   const menuItems = await prisma.menuItem.findMany({
     where: {
-      teamId: parseInt(params.id)
+      teamId: parseInt(params.teamId)
     }
   });
   if (!menuItems) return NextResponse.json({ error: 'No menu items found' }, { status: 404 });
