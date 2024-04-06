@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/prisma/client';
-import { quizSchema } from '../schema';
+import { quizSchema } from '../../schema';
 
 export async function GET(
   request: NextRequest,
