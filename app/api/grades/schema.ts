@@ -5,6 +5,6 @@ export const gradeSchema = z.object({
   quizId: z.number()
 }).strict();
 
-export const partialGradeSchema = z.object({
+export const extendedGradeSchema = gradeSchema.extend({
   grade: z.number()
-}).partial().strict();
+}).strict();

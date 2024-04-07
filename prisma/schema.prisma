@@ -49,7 +49,7 @@ model Grade {
   memberId Int
   grade    Int?
 
-  @@id([quizId, memberId])
+  @@id(name: "gradeId", [quizId, memberId])
 }
 
 model Question {

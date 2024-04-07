@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/prisma/client';
-import { gradeSchema } from './schema'
+import { gradeSchema, extendedGradeSchema } from './schema';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -12,4 +12,20 @@ export async function POST(request: NextRequest) {
     }
   });
   return NextResponse.json(grade, { status: 200 });
+}
+
+export async function PATCH(request: NextRequest) {
+  const body = await request.json();
+  const validation = extendedGradeSchema.safeParse(body);
+  if (!validation.success) return NextResponse.json(validation.error.errors, { status: 404 });
+  const updatedGrade = await prisma.grade.update({
+    where: { 
+      gradeId: { 
+        quizId: body.quizId ,
+        memberId: body.memberId
+      } 
+    },
+    data: { grade: body.grade }
+  });
+  return NextResponse.json(updatedGrade, { status: 200 });
 }
