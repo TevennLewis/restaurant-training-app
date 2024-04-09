@@ -7,8 +7,10 @@ interface CloudinaryResult {
   public_id: string;
 }
 
+// need to make this component extensible to img situations outside of profilePic (e.g. menuitems)
 const PicUpload = () => {
   const [publicId, setPublicId] = useState('');
+  // once auth is set up, memberId will be set dynamically
   const memberId = '1';
   useEffect(() => {
     if (!publicId) return;
